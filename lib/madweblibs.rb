@@ -14,5 +14,3 @@ module Madweblibs
   end
 end
 
-#testing
-Madweblibs.generate
