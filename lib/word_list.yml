@@ -3,6 +3,7 @@ adjectives:
 - asynchronous
 - awesome
 - beautiful
+- clean
 - consistent
 - customizable
 - dead-simple
@@ -30,6 +31,7 @@ adjectives:
 - social
 - static
 - test-driven
+- tiny
 - turing-complete
 - type-safe
 - unfancy
