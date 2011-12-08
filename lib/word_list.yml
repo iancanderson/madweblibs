@@ -1,0 +1,110 @@
+adjectives:
+- accessible
+- asynchronous
+- awesome
+- beautiful
+- consistent
+- customizable
+- dead-simple
+- distributed
+- DRY
+- durable
+- dynamic
+- eager-loading
+- encrypted
+- flexible
+- free-as-in-beer
+- free-as-in-speech
+- full-stack
+- functional
+- highly-optimized
+- lazy-loading
+- little
+- localized
+- modular
+- object-oriented
+- parallel
+- scalable
+- schemaless
+- semantic
+- social
+- static
+- test-driven
+- turing-complete
+- type-safe
+- unfancy
+- web-scale
+adverbs:
+- awesomely
+- fully
+- highly
+- incredibly
+- readily
+- semantically
+- syntactically
+- wonderfully
+datastores:
+- bigtable
+- cassandra
+- cloud
+- couch-db
+- memory
+- mongo
+- postgres
+- redis
+- yaml
+nouns1:
+- canvas
+- css
+- fibers
+- factories
+- fixtures
+- HTML5
+- javascript
+- key-value store
+- message queue
+- web-socket
+- web font
+nouns2:
+- adapter
+- client
+- cms
+- crm
+- dsl
+- extension
+- framework
+- generator
+- interface
+- middleware
+- orm
+- parser
+- plugin
+- pre-compiler
+- replacement
+- state machine
+- toolkit
+- wrapper
+platforms:
+  ActiveRecord: 'active'
+  capistrano: 'cap'
+  clojure: 'cloj'
+  Django: 'jang'
+  emacs: 'macs'
+  Erlang: 'erl'
+  gopher: 'goph'
+  groovy: 'groo'
+  hadoop: 'doop'
+  haskell: 'hask'
+  javascript: 'java'
+  json: 'jas'
+  lua: 'lu'
+  NodeJs: 'node'
+  python: 'py'
+  rails: 'rail'
+  ruby: 'ru'
+  rvm: 'rev'
+  sass: 'sassy'
+  scala: 'scal'
+  sinatra: 'sin'
+  TextMate2: 'mate'
+  vim: 'vim'

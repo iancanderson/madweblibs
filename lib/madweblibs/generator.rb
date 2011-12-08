@@ -1,5 +1,6 @@
 require 'linguistics'
 Linguistics::use( :en )
+require 'yaml'
 
 module Madweblibs
   class Generator
@@ -16,24 +17,24 @@ module Madweblibs
       "#{shortname}: #{description}"
     end
     def get_random_components
-      @adjectives = ADJECTIVES.sample(@adjective_count).map do |adjective|
-        rand < @adverb_probability ? "#{ADVERBS.sample}-#{adjective}" : adjective
+      @adjectives = adjectives.sample(@adjective_count).map do |adjective|
+        rand < @adverb_probability ? "#{adverbs.sample}-#{adjective}" : adjective
       end
-      @database = DATABASES.sample
-      @noun1 = NOUNS1.sample
-      @noun2 = NOUNS2.sample
-      @platform = PLATFORMS.keys.sample
+      @datastore = datastores.sample
+      @noun1 = nouns1.sample
+      @noun2 = nouns2.sample
+      @platform = platforms.keys.sample
     end
     def shortname_component(string)
-      component = if PLATFORMS.key? string.to_sym
-        PLATFORMS[string.to_sym]
+      component = if platforms.key? string.to_sym
+        platforms[string.to_sym]
       else
         string[0..2]
       end
       component.capitalize
     end
     def generate_shortname
-      [@database, @platform, @noun1].map do |string|
+      [@datastore, @platform, @noun1].map do |string|
         shortname_component string
       end.join("") + shortname_suffix
     end
@@ -64,7 +65,7 @@ module Madweblibs
       @adjectives.join(', ')
     end
     def storage_clause
-      "#{@database}-backed"
+      "#{@datastore}-backed"
     end
     def noun_clause
       "#{@noun1} #{@noun2}"
@@ -75,122 +76,27 @@ module Madweblibs
     def platform_clause
       "for #{@platform}"
     end
-    ADVERBS = %w{
-      awesomely
-      fully
-      highly
-      incredibly
-      readily
-      semantically
-      syntactically
-      wonderfully
-    }
-    ADJECTIVES = %w{
-      accessible
-      asynchronous
-      awesome
-      beautiful
-      consistent
-      customizable
-      dead-simple
-      distributed
-      DRY
-      durable
-      dynamic
-      eager-loading
-      encrypted
-      flexible
-      free-as-in-beer
-      free-as-in-speech
-      full-stack
-      functional
-      highly-optimized
-      lazy-loading
-      little
-      localized
-      modular
-      object-oriented
-      parallel
-      scalable
-      schemaless
-      semantic
-      social
-      static
-      test-driven
-      turing-complete
-      type-safe
-      unfancy
-      web-scale
-    }
-    DATABASES = %w{
-      bigtable
-      cassandra
-      cloud
-      couch-db
-      memory
-      mongo
-      postgres
-      redis
-      yaml
-    }
-    NOUNS1 = [
-      'canvas',
-      'css',
-      'fibers',
-      'factories',
-      'fixtures',
-      'HTML5',
-      'javascript',
-      'key-value store',
-      'message queue',
-      'web-socket',
-      'web font'
-    ]
-    NOUNS2 = [
-      'adapter',
-      'client',
-      'cms',
-      'crm',
-      'dsl',
-      'extension',
-      'framework',
-      'generator',
-      'interface',
-      'middleware',
-      'orm',
-      'parser',
-      'plugin',
-      'pre-compiler',
-      'replacement',
-      'state machine',
-      'toolkit',
-      'wrapper'
-    ]
-    PLATFORMS = {
-      ActiveRecord: 'active',
-      capistrano: 'cap',
-      clojure: 'cloj',
-      Django: 'jang',
-      emacs: 'macs',
-      Erlang: 'erl',
-      gopher: 'goph',
-      groovy: 'groo',
-      hadoop: 'doop',
-      haskell: 'hask',
-      javascript: 'java',
-      json: 'jas',
-      lua: 'lu',
-      NodeJs: 'node',
-      python: 'py',
-      rails: 'rail',
-      ruby: 'ru',
-      rvm: 'rev',
-      sass: 'sassy',
-      scala: 'scal',
-      sinatra: 'sin',
-      TextMate2: 'mate',
-      vim: 'vim'
-    }
+    def yaml_hash
+      @yaml_hash ||= YAML.load(File.open('lib/word_list.yml'))
+    end
+    def adjectives
+      @adjectives ||= yaml_hash['adjectives']
+    end
+    def adverbs
+      @adverbs ||= yaml_hash['adverbs']
+    end
+    def datastores
+      @datastores ||= yaml_hash['datastores']
+    end
+    def nouns1
+      @nouns1 ||= yaml_hash['nouns1']
+    end
+    def nouns2
+      @nouns2 ||= yaml_hash['nouns2']
+    end
+    def platforms
+      @platforms ||= yaml_hash['platforms']
+    end
   end
 end
 
