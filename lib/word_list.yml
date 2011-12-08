@@ -50,6 +50,7 @@ datastores:
 - couch-db
 - memory
 - mongo
+- nosql
 - postgres
 - redis
 - yaml
