@@ -91,6 +91,7 @@ platforms:
   ActiveRecord: 'active'
   capistrano: 'cap'
   clojure: 'cloj'
+  coffeescript: 'coff'
   Django: 'jang'
   emacs: 'macs'
   Erlang: 'erl'
