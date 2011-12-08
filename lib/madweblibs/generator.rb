@@ -79,23 +79,14 @@ module Madweblibs
     def yaml_hash
       @yaml_hash ||= YAML.load(File.open('lib/word_list.yml'))
     end
-    def adjectives
-      @adjectives ||= yaml_hash['adjectives']
-    end
-    def adverbs
-      @adverbs ||= yaml_hash['adverbs']
-    end
-    def datastores
-      @datastores ||= yaml_hash['datastores']
-    end
-    def nouns1
-      @nouns1 ||= yaml_hash['nouns1']
-    end
-    def nouns2
-      @nouns2 ||= yaml_hash['nouns2']
-    end
-    def platforms
-      @platforms ||= yaml_hash['platforms']
+
+    def method_missing(meth, *args, &block)
+      # look in the yaml_hash if a method is not defined
+      if yaml_hash.key? meth.to_s
+        yaml_hash[meth.to_s]
+      else
+        super
+      end
     end
   end
 end
