@@ -14,5 +14,4 @@ irb(main):004:0> Madweblibs.generate
 => "CouRailHtmie: the highly-optimized, free-as-in-beer, asynchronous couch-db-backed HTML5 wrapper-as-a-service for rails."
 irb(main):005:0> Madweblibs.generate
 => "CouRuWebly: the schemaless, dead-simple, encrypted couch-db-backed web font state machine for ruby."
-irb(main):006:0>
 ```
